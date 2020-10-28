@@ -27,6 +27,12 @@ class OrderRepository < BaseRepository
     undelivered.select{ |order| order.employee.id == id }
   end
 
+  def mark_as_delivered(order)
+    order = @elements.find {|element| element == order }
+    order.deliver!
+    save_to_csv
+  end
+
   def build_element(row)
     row[:id] = row[:id].to_i
     row[:delivered] = row[:delivered] == 'true'

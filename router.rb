@@ -53,7 +53,7 @@ class Router
   def route_delivery_action(choice)
     case choice
     when 1 then @orders_controller.list_my_orders(@employee)
-    when 2 then puts "Try again..."
+    when 2 then @orders_controller.mark_as_delivered(employee)
     when 3 then stop!
     else
       puts "Try again..."

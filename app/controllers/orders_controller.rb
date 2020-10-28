@@ -20,10 +20,18 @@ class OrdersController
     @view.display(orders)
   end
 
-  # def list_my_orders(employee)
+  def list_my_orders(employee)
+    @undelivered = @order_repository.undelivered_orders.select { |order| order.employee == employee}
   #   my_orders = @order_repository.my_undelivered_orders(employee.id)
-  #   @view.display(my_orders)
-  # end
+    @view.display(@undelivered)
+  end
+
+  def mark_as_delivered(employee)
+    list_my_orders(employee)
+    index = @view.ask_for('index').to_i
+    order = @undelivered[index - 1]
+    @order_repository.mark_as_delivered(order)
+  end
 
   def add
     meal = choose_meal
@@ -60,5 +68,4 @@ class OrdersController
     customer = @customer_repository.find_by_index(customer_index - 1)
     return customer
   end
-
 end
