@@ -59,11 +59,15 @@ class Router
     puts "--------------------"
     puts "------- MENU -------"
     puts "--------------------"
+    puts ""
+    puts "What do you wish to do?"
     puts "1. Add new meal"
     puts "2. List all meals"
     puts "3. Add new customer"
     puts "4. List all customers"
-    puts "5. Quit program"
+    puts "5 - View all undelivered orders"
+    puts "6 - Add an order to a customer and assign it a delivery person"
+    puts "7 - Stop and exit the program"
     puts "> "
   end
 
@@ -71,7 +75,12 @@ class Router
     puts "--------------------"
     puts "------- MENU -------"
     puts "--------------------"
-    puts "TODO"
+    puts ""
+    puts "What do you wish to do?"
+    puts "1 - View your undelivered orders"
+    puts "2 - Mark an order as delivered"
+    puts "3 - Stop and exit the program"
+    puts "> "
   end
 
   def stop!
