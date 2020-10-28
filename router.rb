@@ -1,10 +1,11 @@
 # TODO: implement the router of your app.
 class Router
-  def initialize(meals_controller, customers_controller, sessions_controller)
+  def initialize(meals_controller, customers_controller, sessions_controller, orders_controller)
     @running = true
     @meals_controller = meals_controller
     @customers_controller = customers_controller
     @sessions_controller = sessions_controller
+    @orders_controller = orders_controller
   end
 
   def run
@@ -41,7 +42,9 @@ class Router
     when 2 then @meals_controller.list
     when 3 then @customers_controller.add
     when 4 then @customers_controller.list
-    when 5 then stop!
+    when 5 then @orders_controller.list_undelivered_orders
+    when 6 then @orders_controller.add
+    when 7 then stop!
     else
       puts "Wrong choice, try again"
     end
@@ -49,7 +52,9 @@ class Router
 
   def route_delivery_action(choice)
     case choice
-    when 1 then puts "TODO"
+    when 1 then @orders_controller.list_my_orders(@employee)
+    when 2 then puts "Try again..."
+    when 3 then stop!
     else
       puts "Try again..."
     end
@@ -65,9 +70,9 @@ class Router
     puts "2. List all meals"
     puts "3. Add new customer"
     puts "4. List all customers"
-    puts "5 - View all undelivered orders"
-    puts "6 - Add an order to a customer and assign it a delivery person"
-    puts "7 - Stop and exit the program"
+    puts "5. View all undelivered orders"
+    puts "6. Add an order to a customer and assign it a delivery person"
+    puts "7. Stop and exit the program"
     puts "> "
   end
 

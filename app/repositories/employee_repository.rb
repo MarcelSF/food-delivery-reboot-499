@@ -8,7 +8,16 @@ class EmployeeRepository < BaseRepository
     Employee.new(row)
   end
 
+  def all_delivery_guys
+    @elements.select { |element| element.delivery_guy? }
+  end
+
+  def find_delivery_guy(index)
+    delivery_guys = all_delivery_guys
+    delivery_guys[index]
+  end
+
   def find_by_username(username)
-    @elements.find {|element| element.username == username}
+    @elements.find { |element| element.username == username }
   end
 end

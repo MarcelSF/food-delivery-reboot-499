@@ -9,4 +9,13 @@ class MealsView < BaseView
       puts "💵 $ #{meal.price}"
     end
   end
+
+  def display_with_index(meals)
+    puts "🍣 🍦 List of available meals! 🍔 🍕"
+    puts "--------------------"
+    meals.each_with_index do |meal, index|
+      puts "#{index + 1} -> #{meal.name}"
+      puts "💵 $ #{meal.price}"
+    end
+  end
 end

@@ -18,6 +18,10 @@ class BaseRepository
     @elements
   end
 
+  def find_by_index(index)
+    @elements[index]
+  end
+
   def find(id)
     @elements.find {|element| element.id == id}
   end
